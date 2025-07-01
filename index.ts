@@ -1,52 +1,26 @@
-const text = '<@Misha/> misha@gmail.com_fdgdfg123 Hey team. I would like to have a call with <@Megan/> Megan@gmail.com.1231231 at 17:00. <@Viktor/> viKtoR@mail.ua would you join us?';
+// 1. Match a basic email address
+// 💡 e.g. user@example.com
 
-// 1. Match valid email addresses
-// 💡 e.g. "user@example.com", "john.doe_94@mail.co.uk"
+// 2. Match only emails from a specific domain
+// 💡 e.g. @gmail.com or @mycompany.org
 
-// Ignore invalid ones like @example, john@@mail.
+// 3. Match a Twitter-style nickname
+// 💡 e.g. @username, but skip @123
 
-// 2. Match quoted strings
-// 💡 Match text inside double quotes:
-// → "This is a test" from He said: "This is a test"
+// 4. Match a full URL with http/https
+// 💡 e.g. https://site.com, http://example.org/page
 
-// Hint: be careful not to be greedy.
+// 5. Match a URL with optional www and path
+// 💡 e.g. www.example.com/path, site.org, example.net/about
 
-// 3. Match hex color codes
-// 💡 Match #fff, #FFFFFF, #1a2b3c — all valid hex codes
-
-// 4. Match repeated words (like “the the”)
-// 💡 From "I saw the the bird fly" → match "the the"
-
-// Hint: use backreferences
-
-// 5. Match dates in format DD/MM/YYYY
-// 💡 e.g. "25/06/2025" or "01/01/1999"
-
-// Optional: Reject invalid dates like 99/99/9999 — bonus level
-
-// 6. Match floating point numbers (with optional minus)
-// 💡 e.g. "3.14", "-0.5", "0.0001"
-
-// Should not match . or -. alone.
+// 6. Match a hashtag
+// 💡 e.g. #regex, #DnD_is_fun, skip just #
 
 // 7. Match HTML-like tags
-// 💡 e.g. <div>, <img src="x">, </p>
-// → Match the entire tag.
+// 💡 e.g. <div>, <a href="...">, </p>
 
-// 8. Match camelCase identifiers
-// 💡 From "userName totalAmount base64Decoder"
-// → Match "userName", "totalAmount" etc.
-
-// Must start with lowercase, followed by at least one capital chunk.
-
-// 9. Match valid IPv4 addresses
-// 💡 e.g. "192.168.1.1", "8.8.8.8"
-// → Match only values in 0–255 range (bonus if you check ranges).
-
-// 10. Match words that don’t contain vowels
-// 💡 From "my fly cry sky try"
-// → Match "my", "fly", "cry" but not "sky" or "try" if you treat y as vowel.
-// Optional: customize vowel set (a, e, i, o, u, sometimes y)
+// 8. Match self-closing HTML tags
+// 💡 e.g. <img src="x.jpg"/>, <br/>
 
 const solution1 = /\d+/g;
 const solution2 = /\b[a-z]+\b/g;
@@ -59,9 +33,16 @@ const solution8 = /[a-zA-Z]+[-]+[a-zA-Z]+/g;
 const solution9 = /[A-Z]{1}/g;
 const solution10 = /[a-zA-Z]+[0-9]+/g;
 const solution11 = /(?<=@)\w+(?=\/)/g;
-const solution12 = /[a-zA-Z0-9]+@[a-zA-Z0-9.]+\.[a-z]{2,12}/g;
+const solution12 = /[a-zA-Z0-9]+@[a-zA-Z0-9.]+\.[a-z]{2,12}/g; // - for task 1. Match a basic email adress
+const solution13 = /(\+?)\d+[0-9\-)(\s]{10,16}(?:\d)/g;
+const solution14 = /(MESS|CALL)[a-zA-Z0-9]{8}(CA|US)/g;
+const solution15 = /\w+(@gmail.com)/g; // - for task 2. Match only emails from a specific domain
+const solution16 = /(@)[a-zA-Z0-9_]+\s[^!-,]{1,15}/g; // - for task 3. Match a Twitter-style nickname
+const solution17 = /((http(s?):\/\/)|(www\.?))[a-zA-Z0-9\._-]+\.[a-z]{2,12}(\/[a-z]+)/g; // for task 4 & 5. Match a full URL with http/https | Match a URL with optional www and path
 
+const tokens = 'CALLA1B2C3D4US MESSZ9X8Y7W6CACALL1234ABCDUS, MESSQWER5678CA, CALLZXCVBN12US,MESS01928374CA. CALLLMNOPQR1US MESSHELLO88CA';
+const text = '213@gmail.com, sdf@mail.ua, 123@gmail.com, hgf@life.com @elonmusk @NASA @TheRock @john_doe_1987 @_codingWizard @ChatGPT_bot @a1b2c3 @DnD_Master https://site.com, www.example.com/path, site.org, example.net/about http://example.org/page';
 
 console.time('solution12');
-console.log(text.match(solution12));
+console.log(text.match(solution17));
 console.timeEnd('solution12');
