@@ -38,11 +38,13 @@ const solution13 = /(\+?)\d+[0-9\-)(\s]{10,16}(?:\d)/g;
 const solution14 = /(MESS|CALL)[a-zA-Z0-9]{8}(CA|US)/g;
 const solution15 = /\w+(@gmail.com)/g; // - for task 2. Match only emails from a specific domain
 const solution16 = /(@)[a-zA-Z0-9_]+\s[^!-,]{1,15}/g; // - for task 3. Match a Twitter-style nickname
-const solution17 = /((http(s?):\/\/)|(www\.?))[a-zA-Z0-9\._-]+\.[a-z]{2,12}(\/[a-z]+)/g; // for task 4 & 5. Match a full URL with http/https | Match a URL with optional www and path
+const solution17 = /((http(s?):\/\/)|(www\.?))[a-zA-Z0-9\._-]+\.[a-z]{2,12}(\/[a-z]+)/g; // - for task 4 & 5. Match a full URL with http/https | Match a URL with optional www and path
+const solution18 = /(#)\w+/g; // - for task 6. Match a hashtag
+const solution19 = /(<)[a-z\="\{\}\s]+(\/>)/g; // - for task 7 & 8. Match HTML-like tags | Match self-closing HTML tags
 
 const tokens = 'CALLA1B2C3D4US MESSZ9X8Y7W6CACALL1234ABCDUS, MESSQWER5678CA, CALLZXCVBN12US,MESS01928374CA. CALLLMNOPQR1US MESSHELLO88CA';
-const text = '213@gmail.com, sdf@mail.ua, 123@gmail.com, hgf@life.com @elonmusk @NASA @TheRock @john_doe_1987 @_codingWizard @ChatGPT_bot @a1b2c3 @DnD_Master https://site.com, www.example.com/path, site.org, example.net/about http://example.org/page';
+const text = '213@gmail.com, sdf@mail.ua, 123@gmail.com, hgf@life.com @elonmusk, <div/>, <img src=""/>, # @NASA @TheRock @john_doe_1987 @_codingWizard #regex, #DnD_is_fun @ChatGPT_bot @a1b2c3 @DnD_Master https://site.com, www.example.com/path, site.org, example.net/about http://example.org/page';
 
 console.time('solution12');
-console.log(text.match(solution17));
+console.log(text.match(solution19));
 console.timeEnd('solution12');
