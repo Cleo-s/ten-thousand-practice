@@ -43,12 +43,15 @@ const solution18 = /(#)\w+/g; // - for task 6. Match a hashtag
 const solution19 = /(<)[a-z\="\{\}\s]+(\/>)/g; // - for task 7 & 8. Match HTML-like tags | Match self-closing HTML tags
 const solution20 = /[a-z]+[A-Z]+(?:[a-z])+/g;
 const solution21 = /([A-Z])[a-z]+[A-Z](?:\w+)+/g;
-// const solution22 = 
+const solution22 = /(\d+.\d+.\d+.(?:\d+))+/g;
+
+//const solution23 = /(\w+:|:(?::))(?:\w+:.(?:\w+:.(?:\w+:.(?:\w+(?::.(?:\w+))))))/g;
+//const solution24 = //g;
 
 const tokens = 'CALLA1B2C3D4US MESSZ9X8Y7W6CACALL1234ABCDUS, MESSQWER5678CA, CALLZXCVBN12US,MESS01928374CA. CALLLMNOPQR1US MESSHELLO88CA';
 const text = '213@gmail.com, sdf@mail.ua, 123@gmail.com, hgf@life.com @elonmusk, <div/>, <img src=""/>, # @NASA @TheRock @john_doe_1987 @_codingWizard #regex, #DnD_is_fun @ChatGPT_bot @a1b2c3 @DnD_Master https://site.com, www.example.com/path, site.org, example.net/about http://example.org/page';
-const text1 = 'userName", "totalAmount", "base64Decoder UserProfile", "LoginPage", "ApiClient';
+const text1 = 'userName", "totalAmount", "base64Decoder UserProfile", "LoginPage", "ApiClient 192.168.0.1, fe80::1, ::, ::ffff:192.0.2.128 8.8.8.8 0.0.0.0, 255.255.255.255 00:1A:2B:3C:4D:5E or 00-1A-2B-3C-4D-5E aa:bb:cc:dd:ee:ff, AA-BB-CC-DD-EE-FF';
 
 console.time('solution12');
-console.log(text1.match(solution21));
+console.log(text1.match(solution22));
 console.timeEnd('solution12');
