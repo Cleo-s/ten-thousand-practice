@@ -4,4 +4,6 @@ const boolean: boolean = true;
 const undef: undefined = undefined;
 const zero: null = null;
 
+
 console.log(typeof string);
+console.log(typeof number);
