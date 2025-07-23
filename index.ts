@@ -8,3 +8,4 @@ const zero: null = null;
 console.log(typeof string);
 console.log(typeof number);
 console.log(typeof zero);
+console.log(typeof undef);
