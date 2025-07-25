@@ -9,3 +9,4 @@ console.log(typeof string);
 console.log(typeof number);
 console.log(typeof zero);
 console.log(typeof undef);
+console.log(typeof boolean);
