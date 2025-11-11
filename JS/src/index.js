@@ -1,17 +1,36 @@
-function Greet(name) {
-    return `Hello, ${name}`;
+//-----------------------------------------------------TASK 1-----------------------------------------------------//
+
+function isPositive(number) {
+    if (number > 0)
+        return 'Positive';
+    else if (number === 0)
+        return 'Zero';
+    else 
+        return 'Negative'; 
 }
 
-console.log(Greet('Misha'));
+console.log(isPositive(-1))
 
-function IsAdult (age) {
-    return age >= 18;
+//-----------------------------------------------------TASK 2-----------------------------------------------------//
+
+function checkAcces(userStatus) {
+    switch (userStatus) {
+        case 'admin': return 'Full Access Granted';
+        case 'user': return 'Limited Access';
+        case 'guest': return 'Read Only Access';
+        default: return 'Access Denied';
+    }
 }
 
-console.log(IsAdult(21));
+//-----------------------------------------------------TASK 3-----------------------------------------------------//
 
-function WhatType(value) {
-    return typeof(value);
+checkAcces('Hacker')
+
+function isBetween(n, min, max) {
+    if (n > min && n < max)
+        return true;
+    else 
+        return false;
 }
 
-console.log(WhatType(1));
+console.log(isBetween(6, 1, 5))
