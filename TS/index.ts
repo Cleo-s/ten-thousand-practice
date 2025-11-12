@@ -1,50 +1,19 @@
-//-----------------------------------------------------TASK 1-----------------------------------------------------//
+function getLength(text: string): number {
+    const textLength: number = text.length;
+    return textLength; 
+}
 
-type color = ('red' | 'yellow' | 'blue');
+console.log(getLength('Vladik'));
 
-//const currentLight: color = 'blue';
+type Size = 'small' | 'medium' | 'large';
 
-//-----------------------------------------------------TASK 2-----------------------------------------------------//
-
-function nextLight(currentLight: color): color {
-    switch (currentLight) {
-        case 'blue': return 'yellow';
-        case 'yellow': return 'red';
-        case 'red': return 'blue';
-        default: return 'blue';
+function getLabelSize(size: Size): string {
+    switch(size) {
+        case 'small': return 'Selected: small';
+        case 'medium': return 'Selected: medium';
+        case 'large': return 'Selected: large';
+        default: return 'Size not choosen';
     }
 }
 
-console.log(nextLight("blue"));
-
-//-----------------------------------------------------TASK 3-----------------------------------------------------//
-
-enum Language {
-    JS,
-    TS,
-    CSS
-}
-
-// function LogLang(lang: Language): string {
-//     switch (lang) {
-//         case Language.TS: return 'You chose TS';
-//         case Language.CSS: return 'You chose CSS';
-//         case Language.JS: return 'You chose JS';
-//         default: 'Choose Your Language';
-//     }
-// }
-
-// console.log(LogLang(Language.TS));
-
-function LogLang(lang: Language): string {
-    if (lang === Language.TS)
-        return 'You chose TS!';
-    else if (lang === Language.CSS) 
-        return 'You chose CSS';
-    else if (lang === Language.JS)
-        return 'Your default language is JS';
-    else 
-        return '1';
-}
-
-console.log(LogLang(Language.JS));
+console.log(getLabelSize('small'));

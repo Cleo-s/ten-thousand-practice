@@ -1,36 +1,18 @@
-//-----------------------------------------------------TASK 1-----------------------------------------------------//
-
-function isPositive(number) {
-    if (number > 0)
-        return 'Positive';
-    else if (number === 0)
-        return 'Zero';
+function StrictEqual(a, b) {
+    if (typeof(a) === typeof(b))
+        return true;
     else 
-        return 'Negative'; 
+        return 'type of A is not equal type of B';
 }
 
-console.log(isPositive(-1))
+console.log(StrictEqual(1, 2));
 
-//-----------------------------------------------------TASK 2-----------------------------------------------------//
-
-function checkAcces(userStatus) {
-    switch (userStatus) {
-        case 'admin': return 'Full Access Granted';
-        case 'user': return 'Limited Access';
-        case 'guest': return 'Read Only Access';
-        default: return 'Access Denied';
+function getRole(role) {
+    switch (role) {
+        case 'admin': return 'Welcome Admin';
+        case 'user': return 'Welcome User';
+        default: 'Access denied';
     }
 }
 
-//-----------------------------------------------------TASK 3-----------------------------------------------------//
-
-checkAcces('Hacker')
-
-function isBetween(n, min, max) {
-    if (n > min && n < max)
-        return true;
-    else 
-        return false;
-}
-
-console.log(isBetween(6, 1, 5))
+console.log(getRole('admin'));
