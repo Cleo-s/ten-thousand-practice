@@ -1,18 +1,29 @@
-function StrictEqual(a, b) {
-    if (typeof(a) === typeof(b))
-        return true;
-    else 
-        return 'type of A is not equal type of B';
+function greetUser(userName) {
+    return `Hello, ${userName}!` || 'Hello, Guest!' 
 }
 
-console.log(StrictEqual(1, 2));
-
-function getRole(role) {
-    switch (role) {
-        case 'admin': return 'Welcome Admin';
-        case 'user': return 'Welcome User';
-        default: 'Access denied';
-    }
+function betterGreetUser(userName) {
+    if (userName)
+        return `Hello, ${userName}`
+    else if (!userName | undefined)
+        return 'Hello, Guest'; 
 }
 
-console.log(getRole('admin'));
+console.log(betterGreetUser('Vladik Pidor'))
+
+function priceChecker(price, discount) {
+    if (!discount)
+        return price - 0;
+    else if (discount > 0)
+        return price - discount;
+    else if (discount === 0)
+        return price;
+}
+
+console.log(priceChecker(20, ))
+
+function checkSessionAcces(isLogged, isAdmin) {
+    return (isLogged || 'Access Denied') | (isLogged && 'Welcome back!') | (isAdmin && 'Welcome, Admin');
+}
+
+console.log(checkSessionAcces(true, false))
