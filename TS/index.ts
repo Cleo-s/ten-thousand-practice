@@ -1,19 +1,32 @@
-function getLength(text: string): number {
-    const textLength: number = text.length;
-    return textLength; 
+type User = {
+    name: string,
+    age: number
+};
+
+const user: User = {
+    name: 'Misha',
+    age: 21
 }
 
-console.log(getLength('Vladik'));
+function printUser(user: User): string {
+    return user.name;
+}
 
-type Size = 'small' | 'medium' | 'large';
+console.log(printUser(user))
 
-function getLabelSize(size: Size): string {
-    switch(size) {
-        case 'small': return 'Selected: small';
-        case 'medium': return 'Selected: medium';
-        case 'large': return 'Selected: large';
-        default: return 'Size not choosen';
+type calculator = {
+    add: (a: number, b: number) => number;
+    substract: (a: number, b: number) => number; 
+}
+
+const calc: calculator = {
+    add(a, b) {
+        return a + b;
+    },
+    substract(a, b) {
+        return a - b;
     }
 }
 
-console.log(getLabelSize('small')); 
+console.log(calc.add(10, 3));
+console.log(calc.substract(7, 4));
