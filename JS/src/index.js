@@ -22,8 +22,9 @@ function priceChecker(price, discount) {
 
 console.log(priceChecker(20, ))
 
-function checkSessionAcces(isLogged, isAdmin) {
-    return (isLogged || 'Access Denied') | (isLogged && 'Welcome back!') | (isAdmin && 'Welcome, Admin');
+function checkSessionAccess(isLogged, isAdmin) {
+    const access = !isLogged && 'Access Denied' || isAdmin && 'Welcome, admin!' || 'Welcome back!'  
+    return access;
 }
 
-console.log(checkSessionAcces(true, false))
+console.log(checkSessionAccess(false, true))
