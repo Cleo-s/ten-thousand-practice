@@ -16,4 +16,4 @@ function getLabelSize(size: Size): string {
     }
 }
 
-console.log(getLabelSize('small'));
+console.log(getLabelSize('small')); 
