@@ -1,12 +1,20 @@
-function checkSessionAccess(isLogged, isAdmin) {
-    const access = !isLogged && 'Access Denied' || isAdmin && 'Welcome, admin!' || 'Welcome back!'  
-    return access;
+function welcome(name = 'Guest') {
+    return `Welcome, ${name}`;
 }
 
-console.log(checkSessionAccess(false, true))
+console.log(welcome());
 
-function getDisplayName(name) {
-    return (name ?? 'Guest') || (name || 'Anonymous')   
+function makeCounter() {
+    let n = 0;
+    function incrementCount() {
+        return ++n;
+    }
+    return incrementCount;
 }
 
-console.log(getDisplayName('Misha'))
+const count = makeCounter();
+
+console.log(count());
+console.log(count());
+console.log(count());
+console.log(count());
