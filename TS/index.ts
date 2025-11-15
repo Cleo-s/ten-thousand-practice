@@ -1,10 +1,27 @@
 //-----------------------------------------------------TASK 1-----------------------------------------------------//
 
-function printId(id: string | number): number | string {
-    return typeof(id) === 'string' ? id.toUpperCase() : id;
+type HTTPSuccess = {
+    status: 'success';
+    data: string;
 }
 
-console.log(printId(1));
+type HTPPError = {
+    status: 'error';
+    message: string;
+}
+
+type UnionResponseType = HTTPSuccess | HTPPError;
+
+const response: UnionResponseType = {
+    status: 'success',
+    data: 'Codenames: alfa, bravo, everest',
+}
+
+function httpResponseTracker(res: UnionResponseType): string {
+    return res.status === 'success' ? res.data.toUpperCase() : `Error: ${res.message}`;
+}
+
+console.log(httpResponseTracker(response));
 
 //-----------------------------------------------------TASK 2-----------------------------------------------------//
 

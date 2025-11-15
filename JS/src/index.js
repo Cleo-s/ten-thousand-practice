@@ -1,20 +1,52 @@
-function welcome(name = 'Guest') {
-    return `Welcome, ${name}`;
+function fakeFetchMaybeError(message, shouldFail) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (shouldFail) {
+        reject(new Error("Server error"));
+      } else {
+        resolve(message);
+      }
+    }, 500);
+  });
 }
 
-console.log(welcome());
+function fakeFetch(message, delay) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(message);
+    }, delay);
+  });
+}
 
-function makeCounter() {
-    let n = 0;
-    function incrementCount() {
-        return ++n;
+async function Run() {
+    const text = await fakeFetch('Vladik Pidor', 1000);
+    console.log(text);
+}
+
+Run()
+
+async function loadData() {
+    const first = await fakeFetch('Step 1', 500);
+    const second = await fakeFetch('Step 2', 500);
+
+    console.log('First: ', first);
+    console.log('Second: ', second);
+}
+
+loadData()
+
+async function loadSafe() {
+    try {
+        const response = await fakeFetchMaybeError('Data', false)
+        
+        console.log('Data: ', response);
+        return response;
     }
-    return incrementCount;
+    catch (e) {
+        console.error('Fetching has failed:', e.message);
+
+        throw e;
+    }
 }
 
-const count = makeCounter();
-
-console.log(count());
-console.log(count());
-console.log(count());
-console.log(count());
+loadSafe()
