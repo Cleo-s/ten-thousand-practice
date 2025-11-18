@@ -1,61 +1,58 @@
-//-----------------------------------------------------TASK 1-----------------------------------------------------//
-
-type HTTPSuccess = {
-    status: 'success';
-    data: string;
+function fakeFetch(message: string, delay: number): Promise<string> {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(message);
+    }, delay);
+  });
 }
 
-type HTPPError = {
-    status: 'error';
-    message: string;
+async function fetchUserName(): Promise<string> {
+    const name = await fakeFetch('Vlad', 500);
+    return typeof(name);
 }
 
-type UnionResponseType = HTTPSuccess | HTPPError;
+console.log(fetchUserName());
 
-const response: UnionResponseType = {
-    status: 'success',
-    data: 'Codenames: alfa, bravo, everest',
+type fetchUserNameReturn = ReturnType<typeof fetchUserName>;
+type UserName = Awaited<fetchUserNameReturn>;
+
+async function test(): Promise<string> {
+    const testResponse: UserName= await fetchUserName();
+    return typeof(testResponse);
 }
 
-function httpResponseTracker(res: UnionResponseType): string {
-    return res.status === 'success' ? res.data.toUpperCase() : `Error: ${res.message}`;
+console.log(test());
+
+function ultimateDelay<T>(value: T, ms: number): Promise<T> {
+    return new Promise((resolve) => {
+        setTimeout(() =>  resolve(value), ms);
+    });
 }
-
-console.log(httpResponseTracker(response));
-
-//-----------------------------------------------------TASK 2-----------------------------------------------------//
-
-type Circle = {
-    type: 'circle';
-    radius: number;
-}
-
-type Square = {
-    type: 'square',
-    size: number
-}
-
-type UnionType = Circle | Square;
-
-function findP(obj: UnionType): number {
-    return obj.type === 'circle' ? Math.PI * obj.radius ** 2 : obj.size * obj.size; 
-}
-
-const shape: UnionType = {
-    type: 'square',
-    size: 2,
-}
-
-console.log(findP(shape));
-
-//-----------------------------------------------------TASK 3-----------------------------------------------------//
-
 
 type User = {
+    id: number;
     name: string;
-    age: number;
 }
 
-function isUser(x: any): x is User {
-    return x && typeof x.name === 'string' && typeof x.age === 'number';
+async function demo() {
+    const user = await ultimateDelay<User>({id: 1, name: 'Vladik'}, 1000);
+    const id = user.id;
+    const name = user.name;
+
+    return console.log('Delayed User: ', id, name );
 }
+
+type DelayedUserPromise = ReturnType<typeof ultimateDelay<User>>
+type DelayedUser = Awaited<DelayedUserPromise>;
+
+const someUser: DelayedUser = {
+    id: 2,
+    name: 'Misha',
+} 
+
+// type ApiResponse<T> = 
+// { status: '200'; data: T; } | { status: '500'; error: string }
+
+// async function getUser(): Promise<ApiResponse<User>> {
+
+// }
