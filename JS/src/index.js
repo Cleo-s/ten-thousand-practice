@@ -1,52 +1,30 @@
-function fakeFetchMaybeError(message, shouldFail) {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      if (shouldFail) {
-        reject(new Error("Server error"));
-      } else {
-        resolve(message);
-      }
-    }, 500);
-  });
-}
+const users = [
+  {id: 1, name: 'Misha', active: true},
+  {id: 2, name: 'Vlad', active: false},
+  {id: 3, name: 'Bodya', active: true},
+]
 
-function fakeFetch(message, delay) {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(message);
-    }, delay);
-  });
-}
+const userNames = users.map((obj) => obj.name)
+const active = users.filter((s) => s.active === true).map((n) => n.name)
+const activeCount = active.length;
 
-async function Run() {
-    const text = await fakeFetch('Vladik Pidor', 1000);
-    console.log(text);
-}
+console.log(userNames);
+console.log(active);
+console.log('Активних користувачів: ', activeCount);
 
-Run()
 
-async function loadData() {
-    const first = await fakeFetch('Step 1', 500);
-    const second = await fakeFetch('Step 2', 500);
+const products = [
+  { id: 1, name: "Apple",  price: 10,  category: "fruit" },
+  { id: 2, name: "Pear",   price: 12,  category: "fruit" },
+  { id: 3, name: "Bread",  price: 20,  category: "bakery" },
+  { id: 4, name: "Cake",   price: 50,  category: "bakery" },
+  { id: 5, name: "Cheese", price: 40,  category: "dairy" },
+];
 
-    console.log('First: ', first);
-    console.log('Second: ', second);
-}
+const expensive = products.filter((p) => p.price >= 20);
+const labels = expensive.map((obj) => `${obj.name}, (${obj.category}): ${obj.price}`);
+const bread = labels.map((el) => el.split('')).filter((s) => s !== ',').find((el) => el === 'Bread');
 
-loadData()
-
-async function loadSafe() {
-    try {
-        const response = await fakeFetchMaybeError('Data', false)
-        
-        console.log('Data: ', response);
-        return response;
-    }
-    catch (e) {
-        console.error('Fetching has failed:', e.message);
-
-        throw e;
-    }
-}
-
-loadSafe()
+console.log(labels);
+console.log(expensive);
+console.log(bread)

@@ -29,16 +29,11 @@ function ultimateDelay<T>(value: T, ms: number): Promise<T> {
     });
 }
 
-type User = {
-    id: number;
-    name: string;
-}
-
 async function demo() {
     const user = await ultimateDelay<User>({id: 1, name: 'Vladik'}, 1000);
     const id = user.id;
     const name = user.name;
-
+    
     return console.log('Delayed User: ', id, name );
 }
 
@@ -50,9 +45,14 @@ const someUser: DelayedUser = {
     name: 'Misha',
 } 
 
-// type ApiResponse<T> = 
-// { status: '200'; data: T; } | { status: '500'; error: string }
+type ApiResponse<T> = 
+{ status: '200'; data: T; } | { status: '500'; error: string }
+
+type User = {
+    id: number;
+    name: string;
+}
 
 // async function getUser(): Promise<ApiResponse<User>> {
-
+//     const result = await 
 // }
