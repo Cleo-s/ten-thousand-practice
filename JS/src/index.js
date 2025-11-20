@@ -1,30 +1,85 @@
-const users = [
-  {id: 1, name: 'Misha', active: true},
-  {id: 2, name: 'Vlad', active: false},
-  {id: 3, name: 'Bodya', active: true},
-]
+const nums1 = [1, 3, 5, 7, 9];
 
-const userNames = users.map((obj) => obj.name)
-const active = users.filter((s) => s.active === true).map((n) => n.name)
-const activeCount = active.length;
+const sum = nums1.reduce((a, c) => a + c);
+const extended = nums1.push(11);
+const hasFive = nums1.includes(5);
 
-console.log(userNames);
-console.log(active);
-console.log('Активних користувачів: ', activeCount);
+console.log(nums1, sum, extended, hasFive);
 
+//-----------------------------------------------------TASK 1-----------------------------------------------------//
 
-const products = [
-  { id: 1, name: "Apple",  price: 10,  category: "fruit" },
-  { id: 2, name: "Pear",   price: 12,  category: "fruit" },
-  { id: 3, name: "Bread",  price: 20,  category: "bakery" },
-  { id: 4, name: "Cake",   price: 50,  category: "bakery" },
-  { id: 5, name: "Cheese", price: 40,  category: "dairy" },
-];
+const nums2 = [4, 10, 15, 3, 21, 8];
 
-const expensive = products.filter((p) => p.price >= 20);
-const labels = expensive.map((obj) => `${obj.name}, (${obj.category}): ${obj.price}`);
-const bread = labels.map((el) => el.split('')).filter((s) => s !== ',').find((el) => el === 'Bread');
+const even = nums2.filter((e) => {
+  if (e % 2 === 0)
+    return e;
+});
 
-console.log(labels);
-console.log(expensive);
-console.log(bread)
+const doubled = nums2.map((e) => e * 2);
+const greaterThanTen = nums2.filter((e) => e > 10).map((e) => `${e} is > 10`);
+
+//-----------------------------------------------------TASK 2-----------------------------------------------------//
+
+console.log(even, doubled, greaterThanTen)
+
+const nums3 = [1, 2, 2, 3, 3, 3, 4, 5, 5];
+
+const unique = nums3.filter((e, i) => nums3.indexOf(e) === i)
+const squaredArr = unique.map((e) => Math.pow(e, 2))
+
+console.log(unique, squaredArr)
+
+//-----------------------------------------------------TASK 3-----------------------------------------------------//
+
+const user = {
+  id: 1,
+  name: 'Vlad',
+  age: 25,
+  active: true,
+} 
+
+console.log(`User ${user.name} is ${user.age} years old`);
+
+const updatedUser = {...user, email: 'test@example.com', active: false};
+
+console.log(updatedUser);
+
+//-----------------------------------------------------TASK 4-----------------------------------------------------//
+
+const settings = {
+  theme: 'light',
+  language: 'uk',
+  showNotifications: true,
+}
+
+const settingsCopy = {...settings, theme: 'dark', language: 'en'};
+
+function describeSettings(obj) {
+  obj.showNotifications === true ? 
+  console.log(`Theme: ${obj.theme}, language: ${obj.language}, notifications: on`) 
+  : 
+  console.log(`Theme: ${obj.theme}, language: ${obj.language}`)
+}
+
+describeSettings(settingsCopy);
+
+//-----------------------------------------------------TASK 5-----------------------------------------------------//
+
+const profile = {
+  id: 1,
+  name: "Vlad",
+  contacts: {
+    email: "test@example.com",
+    phone: "+380000000000",
+  },
+};
+
+const updatedProfile = {
+  ...profile,
+  contacts: {
+    ...profile.contacts,
+    email: 'new@example.com',
+  }
+};
+
+console.log(updatedProfile);
