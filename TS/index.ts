@@ -1,58 +1,46 @@
-function fakeFetch(message: string, delay: number): Promise<string> {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(message);
-    }, delay);
-  });
-}
-
-async function fetchUserName(): Promise<string> {
-    const name = await fakeFetch('Vlad', 500);
-    return typeof(name);
-}
-
-console.log(fetchUserName());
-
-type fetchUserNameReturn = ReturnType<typeof fetchUserName>;
-type UserName = Awaited<fetchUserNameReturn>;
-
-async function test(): Promise<string> {
-    const testResponse: UserName= await fetchUserName();
-    return typeof(testResponse);
-}
-
-console.log(test());
-
-function ultimateDelay<T>(value: T, ms: number): Promise<T> {
-    return new Promise((resolve) => {
-        setTimeout(() =>  resolve(value), ms);
-    });
-}
-
-async function demo() {
-    const user = await ultimateDelay<User>({id: 1, name: 'Vladik'}, 1000);
-    const id = user.id;
-    const name = user.name;
-    
-    return console.log('Delayed User: ', id, name );
-}
-
-type DelayedUserPromise = ReturnType<typeof ultimateDelay<User>>
-type DelayedUser = Awaited<DelayedUserPromise>;
-
-const someUser: DelayedUser = {
-    id: 2,
-    name: 'Misha',
-} 
-
-type ApiResponse<T> = 
-{ status: '200'; data: T; } | { status: '500'; error: string }
-
 type User = {
     id: number;
     name: string;
+    email?: string;
+    password: string;
 }
 
-// async function getUser(): Promise<ApiResponse<User>> {
-//     const result = await 
-// }
+type OrderType = {
+    id: number;
+    status: UnionOrderStatusType;
+    total: number;
+    comment?: string;
+}
+
+type UserUpdate = Partial<User>;
+type FullUser = Required<User>;
+type UserAdd = Pick<User, 'id' | 'name' | 'email'>;
+type SecureUser = Omit<User, 'password'>
+
+const patch: UserUpdate = {name: 'Vlad'};
+console.log(patch);
+
+const strict: FullUser = {id: 1, name: 'Misha', email: '123@example.com', password: '123'};
+console.log(strict);
+
+const publicUser: UserAdd = {id: 2, name: 'Vlad', email: '456@example.com'};
+console.log(publicUser);
+
+const secured: SecureUser = {id: 3, name: 'Misha', email: '789@example.com'};
+console.log(secured);
+
+type UnionOrderStatusType = 'new' | 'in_progress' | 'done' | 'cancelled';
+type OrderTypeMap = Record<UnionOrderStatusType, OrderType[]>;
+type OrderUpdate = Omit<OrderType, 'id'>;
+type FlexibleOrderType = Partial<OrderUpdate>;
+
+const orderByStatus: OrderTypeMap = {
+    new: [{id: 1, status: 'new', total: 50}], 
+    in_progress: [], 
+    done: [], 
+    cancelled: []
+};
+console.log(orderByStatus);
+
+const orderUpdate: OrderUpdate = {status: 'done', comment: 'all good', total: 20};
+console.log(orderUpdate);
