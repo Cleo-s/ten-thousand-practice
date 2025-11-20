@@ -83,3 +83,21 @@ const updatedProfile = {
 };
 
 console.log(updatedProfile);
+
+//-----------------------------------------------------TASK 6-----------------------------------------------------//
+
+const students = [
+  { id: 1, name: "Vlad",  score: 95 },
+  { id: 2, name: "Misha", score: 70 },
+  { id: 3, name: "Anna",  score: 85 },
+  { id: 4, name: "Oleh",  score: 60 },
+];
+
+const passed = students.filter((el) => {
+  if (el.score >= 80) 
+    return el
+  });
+
+const passedNames = passed.map((el) => el.name);
+
+console.log(passed, passedNames);
