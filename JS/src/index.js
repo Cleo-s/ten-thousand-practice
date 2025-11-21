@@ -99,5 +99,11 @@ const passed = students.filter((el) => {
   });
 
 const passedNames = passed.map((el) => el.name);
+const isMisha = students.find((el) => {
+  if (el.name === 'Misha')
+    return 'Misha has score 70';
+});
 
-console.log(passed, passedNames);
+const withBonus = students.map((el) => el.score + 5);
+
+console.log(passed, passedNames, isMisha, withBonus);
