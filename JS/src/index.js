@@ -107,3 +107,54 @@ const isMisha = students.find((el) => {
 const withBonus = students.map((el) => el.score + 5);
 
 console.log(passed, passedNames, isMisha, withBonus);
+
+//-----------------------------------------------------TASK 7-----------------------------------------------------//
+
+function fakeFetch(name, ms) {
+  return new Promise((resolve) => {
+    setTimeout(() => resolve(name),ms);
+  });
+} 
+
+async function test() {
+  const response = await fakeFetch('Hi, Misha!', 500);
+  // console.log(response);
+}
+
+test();
+
+//-----------------------------------------------------TASK 7-----------------------------------------------------//
+
+async function loadProfile() {
+  const userLoad = await fakeFetch('Loading user...', 300);
+  console.log(userLoad);
+  const profilePictureLoad = await fakeFetch('Loading user profile picture...', 1000);
+  console.log(profilePictureLoad);
+}
+
+loadProfile();
+
+//-----------------------------------------------------TASK 8-----------------------------------------------------//
+
+function fakeFetchMaybeError(meassage, shouldFail) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (shouldFail)
+        reject(new Error('Internal server error. Status: 500'));
+      else 
+        resolve(meassage);
+    }, 500);
+  });
+};
+
+async function errorTest() {
+  try {
+    const response = await fakeFetchMaybeError('Test passed!', true);
+    console.log(response);
+  }
+  catch (e) {
+     console.log('Test failed. Message:', e);
+  };
+};
+
+errorTest();
