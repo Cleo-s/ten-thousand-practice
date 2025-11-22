@@ -112,13 +112,13 @@ console.log(passed, passedNames, isMisha, withBonus);
 
 function fakeFetch(name, ms) {
   return new Promise((resolve) => {
-    setTimeout(() => resolve(name),ms);
+    setTimeout(() => resolve(name), ms);
   });
 } 
 
 async function test() {
   const response = await fakeFetch('Hi, Misha!', 500);
-  // console.log(response);
+  console.log(response);
 }
 
 test();
