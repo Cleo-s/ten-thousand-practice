@@ -16,7 +16,16 @@ body {
 
 /*------------------------------------------------------------------------------------------------------------------------------*/
 
-.click-button {
+#greeting-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+}
+
+#click-button {
     display: block;
     flex-direction: row;
     align-items: center;
@@ -27,7 +36,7 @@ body {
     padding: 4px 24px;
 }
 
-.greeting-p {
+#greeting-p {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -38,4 +47,24 @@ body {
     padding: 4px 12px;
 
     font-family: "Gill Sans", sans-serif;
+}
+
+/*------------------------------------------------------------------------------------------------------------------------------*/
+
+#input-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+}
+
+#message {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    padding: 2px 4px;
 }
