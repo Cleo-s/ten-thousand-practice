@@ -11,6 +11,8 @@ body {
     align-items: center;
     justify-content: center;
 
+    gap: 24px;
+
     height: 100%;
 }
 
@@ -67,4 +69,62 @@ body {
     justify-content: center;
 
     padding: 2px 4px;
+}
+
+/*------------------------------------------------------------------------------------------------------------------------------*/
+
+#todo-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 16px;
+}
+
+#todo-input {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    padding: 4px 8px;
+}
+
+#todo-button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid black;
+    border-radius: 2px;
+
+    padding: 2px 4px;
+    cursor: pointer;
+}
+
+#todo-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+    margin: 0;
+
+    gap: 8px;
+}
+
+#todo-list li {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    padding: 2px 16px;
+    margin: 0;
+
+    border: 1px solid black;
+    border-radius: 2px;
 }
