@@ -5,6 +5,8 @@ const totalSpan = document.getElementById('amount-otp') as HTMLSpanElement;
 const userNameInput = document.getElementById('user-name-input') as HTMLInputElement;
 const greetUserBtn = document.getElementById('greet-btn') as HTMLButtonElement;
 const greetSpan = document.getElementById('greet-span') as HTMLSpanElement;
+const colorDiv = document.getElementById('block') as HTMLDivElement;
+const btnBlock = document.getElementById('btn-collection') as HTMLDivElement;
 
 let iniValue: number = 0;
 
@@ -22,6 +24,8 @@ decBtn.addEventListener('click', () => {
   iniValue -= 1;
   totalSpan.textContent = `Count is: ${iniValue}`;
 });
+
+/*------------------------------------------------------------------TASK 1------------------------------------------------------------*/
 
 if (!userNameInput || !greetSpan || !greetUserBtn)  
   console.log('Error');
@@ -44,3 +48,30 @@ greetUserBtn.addEventListener('click', () => {
     greetSpan.textContent = `Hi there, ${trimmedUserName}`;
   } 
 })
+
+/*------------------------------------------------------------------TASK 2------------------------------------------------------------*/
+
+type BtnId = 'btn-1' | 'btn-2' | 'btn-3';
+type BtnData = {
+  id: BtnId;
+  color: string;
+} 
+type DataSet = {
+  [key in BtnId]: BtnData;
+}
+
+const btnDataSet: DataSet = {
+  "btn-1": {id: 'btn-1', color: 'red'},
+  "btn-2": {id: 'btn-2', color: 'yellow'},
+  "btn-3": {id: 'btn-3', color: 'blue'}, 
+}
+
+
+function changeColor(colorDiv: HTMLDivElement, btnBlock: HTMLDivElement, btnDataSet: DataSet) {
+  if (btnBlock) {
+    const buttonsA = btnBlock.querySelectorAll<HTMLButtonElement>('button');
+    buttonsA.forEach((btn) => {
+      const color = btnDataSet.forEach(())
+    })
+  }
+}
