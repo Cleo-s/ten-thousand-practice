@@ -71,7 +71,7 @@ function changeColor(colorDiv: HTMLDivElement, btnBlock: HTMLDivElement, btnData
   if (btnBlock) {
     const buttonsA = btnBlock.querySelectorAll<HTMLButtonElement>('button');
     buttonsA.forEach((btn) => {
-      const color = btnDataSet.forEach(())
+      
     })
   }
 }
