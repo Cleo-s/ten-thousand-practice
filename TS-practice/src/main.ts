@@ -71,7 +71,20 @@ function changeColor(colorDiv: HTMLDivElement, btnBlock: HTMLDivElement, btnData
   if (btnBlock) {
     const buttonsA = btnBlock.querySelectorAll<HTMLButtonElement>('button');
     buttonsA.forEach((btn) => {
+      if (!(btn.id in btnDataSet)) return;
+      const config = btnDataSet[btn.id as keyof DataSet];
+
+      btn.style.backgroundColor = config.color
+
+      if (!btn) return;
       
+      btn.textContent = `${config.color}`;
+
+      btn.addEventListener('click', () => {
+        colorDiv.style.backgroundColor = config.color;
+      })
     })
   }
 }
+
+changeColor(colorDiv, btnBlock, btnDataSet);
