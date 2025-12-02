@@ -16,65 +16,7 @@ body {
 
 /*------------------------------------------------------------------------------------------------------------------------------*/
 
-#counter-section {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-
-  gap: 8px;
-}
-
-#counter-section button {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-
-  border: 1px solid black;
-  border-radius: 2px;
-
-  padding: 4px 8px;
-}
-
-/*------------------------------------------------------------------------------------------------------------------------------*/
-
-#greet-section {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-
-  gap: 8px;
-}
-
-#greet-btn {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-
-  border: 1px solid black;
-  border-radius: 2px;
-
-  padding: 4px 8px;
-}
-
-#user-name-input {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-
-  border: 1px solid black;
-  border-radius: 2px;
-
-  padding: 4px 8px;
-}
-
-/*------------------------------------------------------------------------------------------------------------------------------*/
-
-#block-color-section {
+#tasks-section {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -83,39 +25,54 @@ body {
   gap: 24px;
 }
 
-#block {
+#tasks-form {
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: center;
-
-  width: 100px;
-  height: 100px;
-
-  border: 1px solid black;
-  border-radius: 2px;
-
-  background-color: transparent;
-}
-
-#btn-collection {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-
-  padding: 0;
-  margin: 0;
 
   gap: 12px;
 }
 
-#btn-collection button {
+#task-input {
   display: flex;
   align-items: center;
   justify-content: center;
-  
+
+  border: 1px solid black;
+  border-rdaius: 2px;
+
+  padding: 4px 8px;
+}
+
+#add-task-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   border: 1px solid black;
   border-radius: 2px;
 
+  cursor: pointer;
+  padding: 2px 4px;
+}
+
+#tasks-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+}
+
+#tasks-list li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid black;
+  border-radius: 2px;
+
+  padding: 4px 8px;
+  gap: 4px;
 }
